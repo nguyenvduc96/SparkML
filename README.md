@@ -6,7 +6,7 @@ libraryDependencies += "org.apache.spark" %% "spark-core" % "2.4.4"
 libraryDependencies += "org.apache.spark" %% "spark-mllib" % "2.4.4"
 ```
 ## 2. Demo
-Run the demo code at src/main/scala/begin/BreastPrediction.scala
+Run the demo code at src/main/scala/begin/CancerPrediction.scala
 
 ## 3. Main steps
 - Create spark Session with n processes:

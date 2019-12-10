@@ -12,7 +12,7 @@ import org.apache.spark.sql.types.IntegerType
   * @author ducnguyen
   * @since 12/5/19
   */
-object BreastPrediction {
+object CancerPrediction {
 
   def main(args: Array[String]): Unit = {
     Logger.getLogger("org").setLevel(Level.ERROR)
