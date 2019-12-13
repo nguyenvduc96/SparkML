@@ -1,6 +1,6 @@
 package demo
 
-import org.apache.log4j.{Level, Logger}
+import org.apache.log4j
 import org.apache.spark.ml.classification.DecisionTreeClassifier
 import org.apache.spark.ml.feature.VectorAssembler
 import org.apache.spark.mllib.evaluation.{MulticlassMetrics, RegressionMetrics}
@@ -15,7 +15,7 @@ import org.apache.spark.sql.types.IntegerType
 object CancerPrediction {
 
   def main(args: Array[String]): Unit = {
-    Logger.getLogger("org").setLevel(Level.ERROR)
+    log4j.Logger.getLogger("org").setLevel(log4j.Level.ERROR)
 
     val spark = SparkSession.builder().master("local[1]").getOrCreate()
 

@@ -9,6 +9,7 @@ libraryDependencies += "org.apache.spark" %% "spark-mllib" % "2.4.4"
 Run the demo code at src/main/scala/begin/CancerPrediction.scala
 
 ## 3. Main steps
+
 - Create spark Session with n processes:
 ```
 import org.apache.spark.sql.SparkSession
@@ -23,6 +24,11 @@ val df = spark.read.option("header", "true")
 - Check schema:
 ```
 df.printSchema()
+```
+- Set log type to ERROR:
+```
+import org.apache.log4j
+log4j.Logger.getLogger("org").setLevel(log4j.Level.ERROR)
 ```
 
 - Replace None value by median:
@@ -60,9 +66,9 @@ val Array(train, test) = df.select("label","features")
 ```
 - Train model:
 ```
-import org.apache.spark.ml.classification.LogisticRegression
-val lr = new LogisticRegression()
-val model = lr.setMaxIter(10).fit(training)
+import org.apache.spark.ml.classification.DecisionTreeClassifier
+val rf = new DecisionTreeClassifier()
+val model = rf.fit(training)
 ```
 - Get result:
 ```
