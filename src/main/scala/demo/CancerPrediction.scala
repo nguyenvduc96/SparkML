@@ -51,7 +51,7 @@ object CancerPrediction {
       randomSplit(Array(0.7, 0.3), seed = 12345)
 
     // Train model
-    val rf = new DecisionTreeClassifier()
+    val rf = new DecisionTreeClassifier().setMaxBins(2).setMaxDepth(0)
 
     val model = rf.fit(training)
     val results = model.transform(test).select("features", "label", "prediction")
