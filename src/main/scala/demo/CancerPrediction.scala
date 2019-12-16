@@ -39,15 +39,9 @@ object CancerPrediction {
 
     // Transform the DataFrame
     val output = assembler.transform(df).selectExpr("Class as label", "features")
-    import org.apache.spark.ml.feature.StandardScaler
-
-    val scaler = new StandardScaler().setInputCol("features").setOutputCol("scaledFeatures")
-      .setWithStd(false).setWithMean(false)
-
-    val feature = scaler.fit(output).transform(output)
 
     // Split into train and test set
-    val Array(training, test) = feature.selectExpr("label", "scaledFeatures as features").
+    val Array(training, test) = output.selectExpr("label", "features").
       randomSplit(Array(0.7, 0.3), seed = 12345)
 
     // Train model
